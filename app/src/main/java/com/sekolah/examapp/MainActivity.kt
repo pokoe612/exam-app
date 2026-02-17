@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var webView: WebView
     
     // ⚙️ GANTI URL UJIAN ANDA DI SINI
-    private val examUrl = "https://ujian.sekolah.s.id"
+    private val examUrl = "https://smkdukep.sch.id"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,20 +31,8 @@ class MainActivity : AppCompatActivity() {
         
         webView.webViewClient = WebViewClient()
         webView.loadUrl(examUrl)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        enableLockTask()
-    }
-
-    override fun onLockTaskModeEntered() {
-        super.onLockTaskModeEntered()
-        Toast.makeText(this, "🔒 Mode Ujian Aktif", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onLockTaskModeExited() {
-        super.onLockTaskModeExited()
+        
+        // Aktifkan Lock Task setelah onCreate
         enableLockTask()
     }
 
