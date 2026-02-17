@@ -12,23 +12,23 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var webView: WebView
-
+    
     // ⚙️ GANTI URL UJIAN ANDA DI SINI
-    private val examUrl = "https://smkdukep.sch.id"
+    private val examUrl = "https://ujian.sekolah.s.id"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        
         webView = findViewById(R.id.webView)
-
+        
         webView.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
             allowFileAccess = true
             cacheMode = WebSettings.LOAD_NO_CACHE
         }
-
+        
         webView.webViewClient = WebViewClient()
         webView.loadUrl(examUrl)
     }
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onLockTaskModeEntered() {
         super.onLockTaskModeEntered()
-        Toast.makeText(this, "Mode Ujian Aktif", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "🔒 Mode Ujian Aktif", Toast.LENGTH_SHORT).show()
     }
 
     override fun onLockTaskModeExited() {
@@ -49,11 +49,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        when(keyCode) {
+        when (keyCode) {
             KeyEvent.KEYCODE_BACK,
             KeyEvent.KEYCODE_HOME,
             KeyEvent.KEYCODE_APP_SWITCH -> {
-                Toast.makeText(this, "Tidak bisa keluar saat ujian", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "⚠️ Tidak bisa keluar saat ujian", Toast.LENGTH_SHORT).show()
                 enableLockTask()
                 return true
             }
